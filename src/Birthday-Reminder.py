@@ -19,10 +19,12 @@ def main():
             formatted_birthday = birth_date.strftime("%d %B")
             if days_until_birthday == 0:
                 message = f"🎂 Reminder: Wish Happy Birthday to {name}! 🎉"
+            elif days_until_birthday == 1:
+                message = f"🎉 Reminder: {name}'s birthday is tomorrow! 🎈"
             else:
                 message = f"🎉 Reminder: {name}'s birthday is in {days_until_birthday} days on {formatted_birthday}! 🎈"
-    payload = {'text': message}
-    requests.post(slack_webhook_url, json=payload)
+            payload = {'text': message}
+            requests.post(slack_webhook_url, json=payload)
 
 if __name__ == "__main__":
     main()
